@@ -44,13 +44,15 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   searchInput: {
-    zIndex: 1,
+    zIndex: 10,
     paddingVertical: 7,
-    paddingHorizontal: 20,
     borderWidth: 1,
+    paddingLeft: 10,
     borderColor: 'rgb(200,200,200)',
     borderRadius: 7,
-    marginVertical: 5,
+    marginTop: 5,
+    marginBottom: -5,
+    width: width * 0.3,
   },
   searchIconContainer: {
     alignItems: 'center',

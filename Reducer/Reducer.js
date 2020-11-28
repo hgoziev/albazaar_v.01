@@ -19,6 +19,7 @@ const initialState = {
   notifier: 0,
   savedNotifier: 0,
   saved: [],
+  ALL_DATA: [],
 };
 
 export const getBasketTotal = (basket) =>
@@ -44,6 +45,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         basket: [...state.basket, action.itemData],
         notifier: state.notifier + 1,
+      };
+    case 'ADD_TO_DATA':
+      return {
+        ...state,
+        ALL_DATA: [...state.ALL_DATA, action.payload],
       };
     case ADD_TO_SAVED:
       return {

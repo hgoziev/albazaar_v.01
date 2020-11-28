@@ -15,12 +15,8 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 import Header from '../../Components/Header/Header';
 import styles from './styles';
 import {useSelector, useDispatch} from 'react-redux';
-import {
-  ADD_TO_BASKET,
-  ADD_TO_SAVED,
-  REMOVE_FROM_SAVED,
-  SAVED_NOTIFIER_REMOVE,
-} from '../../Actons/types';
+import {ADD_TO_BASKET, ADD_TO_SAVED} from '../../Actons/types';
+import auth from '@react-native-firebase/auth';
 
 function SelectedItem({navigation, route}) {
   const dispatch = useDispatch();
