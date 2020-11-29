@@ -14,6 +14,8 @@ target 'al_bazaar' do
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
 
+  pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
+
   target 'al_bazaarTests' do
     inherit! :complete
     # Pods for testing

@@ -10,6 +10,8 @@ import {
   DEC,
   SAVE_ADDRESS,
   ADD_USER,
+  ITEMS_LOADING,
+  DATABASE_FILL,
 } from '../Actons/types';
 
 const initialState = {
@@ -20,6 +22,8 @@ const initialState = {
   savedNotifier: 0,
   saved: [],
   ALL_DATA: [],
+  loading: false,
+  database: [],
 };
 
 export const getBasketTotal = (basket) =>
@@ -30,6 +34,11 @@ export const getSavedTotal = (saved) =>
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case DATABASE_FILL:
+      return {
+        ...state,
+        database: [...state.database, action.payload],
+      };
     case SAVED_NOTIFIER_REMOVE:
       return {
         ...state,
@@ -163,6 +172,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         savedNotifier: 0,
+      };
+
+    case ITEMS_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;

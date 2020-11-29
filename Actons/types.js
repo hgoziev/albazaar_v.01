@@ -9,3 +9,5 @@ export const INC = 'INC';
 export const DEC = 'DEC';
 export const SAVE_ADDRESS = 'SAVED_ADDRESS';
 export const ADD_USER = 'ADD_USER';
+export const ITEMS_LOADING = 'ITEMS_LOADING';
+export const DATABASE_FILL = 'DATABASE_FILL';
