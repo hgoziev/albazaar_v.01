@@ -5,6 +5,7 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 import OrderDetails from '../../Components/OrderDetails/OrderDetails';
@@ -13,11 +14,16 @@ import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {SAVE_ADDRESS} from '../../Actons/types';
 import Ionicon from 'react-native-vector-icons/Ionicons';
+import axios from 'axios';
+import {getSavedTotal, getBasketTotal} from '../../Reducer/Reducer';
 
 function Payment({navigation, route}) {
   const {fromSaved} = route.params;
   const dispatch = useDispatch();
-  const [isSelected, setSelection] = useState(false);
+  const basket = useSelector((state) => state.basket);
+  const saved = useSelector((state) => state.saved);
+  const address = useSelector((state) => state.address);
+
   const [deliveryFee, setDeliveryFee] = useState(null);
   const [shipment, setShipment] = useState(true);
   const [firstName, setFirstName] = useState('');
@@ -30,8 +36,14 @@ function Payment({navigation, route}) {
   const [country, setCountry] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [comments, setComments] = useState('');
-  const [submit, setSubmit] = useState(false);
   const [wire, setWire] = useState(true);
+  const [price, setPrice] = useState(0);
+  const [title, setTitle] = useState('');
+  const [qty, setQty] = useState(1);
+  const [short, setShort] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState('');
+  const [id, setId] = useState('');
 
   const onNextButton = () => {
     dispatch({
@@ -58,6 +70,58 @@ function Payment({navigation, route}) {
     }
   };
 
+  const shipmentMethod = shipment ? 'Standart' : 'Express';
+  const total = fromSaved
+    ? deliveryFee + getSavedTotal(saved)
+    : deliveryFee + getBasketTotal(basket);
+
+  const onSubmitButton = async () => {
+    setLoading(true);
+    if (wire) {
+      fromSaved == true
+        ? saved.map((item) => {
+            setTitle(item.name);
+            setPrice(item.price);
+            setQty(item.qty);
+            setShort(item.descShort);
+            setImageUrl(item.image);
+            setId(item.id);
+          })
+        : basket.map((item) => {
+            setTitle(item.name);
+            setPrice(item.price);
+            setQty(item.qty);
+            setShort(item.descShort);
+            setImageUrl(item.image);
+            setId(item.id);
+          });
+      try {
+        await axios
+          .post('https://albazaar.herokuapp.com/api/orders', {
+            address,
+            shipment: shipmentMethod,
+            total,
+            price,
+            qty,
+            title,
+            short,
+            imageUrl,
+            id: id,
+          })
+          .then((res) => {
+            setLoading(false);
+            alert('You order has successfully been submitted !');
+            navigation.navigate('home');
+          });
+      } catch (err) {
+        setLoading(false);
+        alert('Error occured : ', err);
+      }
+    } else {
+      setLoading(false);
+      alert('Please choose payment method .');
+    }
+  };
   return (
     <View>
       <ScrollView>
@@ -204,28 +268,36 @@ function Payment({navigation, route}) {
           <ProgressStep label="Order Details">
             <OrderDetails deliveryFee={deliveryFee} fromSaved={fromSaved} />
           </ProgressStep>
-          <ProgressStep
-            label="Payment"
-            onSubmit={wire == false && alert('Choose payment method')}>
+
+          <ProgressStep label="Payment" onSubmit={onSubmitButton}>
             <View style={styles.addressContainer}>
               <Text style={styles.title}>Payment Method</Text>
               <View style={styles.paymentCheckboxContainer}>
-                <CheckBox
-                  value={wire}
-                  onValueChange={() => setWire(!wire)}
-                  style={styles.checkbox}
-                  onAnimationType="bounce"
-                />
-                <View style={styles.wire}>
-                  <Text style={styles.wireTransferText}>
-                    Direct Wire Transfer
-                  </Text>
-                  <Text style={styles.wireDetails}>
-                    Please make direct wire transfer to our bank account. Once
-                    the transaction is clearified , we will ship your prodects
-                    immadiately.
-                  </Text>
-                </View>
+                {loading === true ? (
+                  <Image
+                    source={require('../../Assets/images/25.gif')}
+                    resizeMode="center"
+                  />
+                ) : (
+                  <>
+                    <CheckBox
+                      value={wire}
+                      onValueChange={() => setWire(!wire)}
+                      style={styles.checkbox}
+                      onAnimationType="bounce"
+                    />
+                    <View style={styles.wire}>
+                      <Text style={styles.wireTransferText}>
+                        Direct Wire Transfer
+                      </Text>
+                      <Text style={styles.wireDetails}>
+                        Please make direct wire transfer to our bank account.
+                        Once the transaction is clearified , we will ship your
+                        prodects immadiately.
+                      </Text>
+                    </View>
+                  </>
+                )}
               </View>
             </View>
           </ProgressStep>

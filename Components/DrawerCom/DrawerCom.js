@@ -36,129 +36,138 @@ function DrawerCom({navigation, props}) {
         )}
       </View>
       <DrawerContentScrollView {...props}>
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+        <View style={styles.viewContainer}>
           <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
           <DrawerItem
             label="Home"
             onPress={() => navigation.navigate('home')}
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"
-            style={{width: '70%', marginLeft: 10}}
+            style={styles.item2}
           />
         </View>
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+        <View style={styles.viewContainer}>
           <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
           <DrawerItem
             label="Meat, Poultry & Seafood "
-            onPress={() => navigation.navigate('home')}
+            onPress={() =>
+              navigation.navigate('byCategory', {keyword: 'show_meat'})
+            }
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"
-            style={{width: '90%', marginLeft: 10}}
+            style={styles.item}
           />
         </View>
 
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+        <View style={styles.viewContainer}>
           <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
           <DrawerItem
             label="Rice Flour, Pulses & Grains"
-            onPress={() => navigation.navigate('home')}
+            onPress={() =>
+              navigation.navigate('byCategory', {keyword: 'show_rice'})
+            }
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"
-            style={{width: '90%', marginLeft: 10}}
+            style={styles.item}
           />
         </View>
 
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+        <View style={styles.viewContainer}>
           <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
           <DrawerItem
             label="Fruits & Vegetables"
-            onPress={() => navigation.navigate('home')}
+            onPress={() =>
+              navigation.navigate('byCategory', {keyword: 'show_fruits'})
+            }
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"
-            style={{width: '70%', marginLeft: 10}}
+            style={styles.item}
           />
         </View>
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+        <View style={styles.viewContainer}>
           <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
           <DrawerItem
             label="Bread, Noodle & Pasta"
-            onPress={() => navigation.navigate('home')}
+            onPress={() =>
+              navigation.navigate('byCategory', {keyword: 'show_bread'})
+            }
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"
-            style={{width: '70%', marginLeft: 10}}
+            style={styles.item}
           />
         </View>
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+        <View style={styles.viewContainer}>
           <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
           <DrawerItem
             label="Dairy"
-            onPress={() => navigation.navigate('home')}
+            onPress={() =>
+              navigation.navigate('byCategory', {keyword: 'show_dairy'})
+            }
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"
-            style={{width: '70%', marginLeft: 10}}
+            style={styles.item2}
           />
         </View>
 
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+        <View style={styles.viewContainer}>
           <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
           <DrawerItem
             label="Cans & Jars"
-            onPress={() => navigation.navigate('home')}
+            onPress={() =>
+              navigation.navigate('byCategory', {keyword: 'show_cans'})
+            }
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"
-            style={{width: '70%', marginLeft: 10}}
+            style={styles.item2}
           />
         </View>
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+        <View style={styles.viewContainer}>
           <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
           <DrawerItem
             label="Drinks & Beverages"
-            onPress={() => navigation.navigate('home')}
+            onPress={() =>
+              navigation.navigate('byCategory', {keyword: 'show_drinks'})
+            }
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"
-            style={{width: '70%', marginLeft: 10}}
+            style={styles.item2}
           />
         </View>
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+        <View style={styles.viewContainer}>
           <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
           <DrawerItem
             label="Sweets & Snacks"
-            onPress={() => navigation.navigate('home')}
+            onPress={() =>
+              navigation.navigate('byCategory', {keyword: 'show_sweet'})
+            }
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"
-            style={{width: '70%', marginLeft: 10}}
+            style={styles.item2}
           />
         </View>
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+        <View style={styles.viewContainer}>
           <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
           <DrawerItem
             label="Spices & Packets"
-            onPress={() => navigation.navigate('home')}
+            onPress={() =>
+              navigation.navigate('byCategory', {keyword: 'show_spice'})
+            }
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"
-            style={{width: '70%', marginLeft: 10}}
+            style={styles.item2}
           />
         </View>
 
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+        <View style={styles.viewContainer}>
           <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
           <DrawerItem
             label="Frozen Foods"
-            onPress={() => navigation.navigate('home')}
+            onPress={() =>
+              navigation.navigate('byCategory', {keyword: 'show_frozen'})
+            }
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"
-            style={{width: '70%', marginLeft: 10}}
+            style={styles.item2}
           />
         </View>
       </DrawerContentScrollView>

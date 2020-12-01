@@ -23,6 +23,19 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
   },
+  viewContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 10,
+  },
+  item: {
+    width: '90%',
+    marginLeft: 10,
+  },
+  item2: {
+    width: '70%',
+    marginLeft: 10,
+  },
 });
 
 export default styles;

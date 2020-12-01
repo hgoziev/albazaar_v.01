@@ -20,7 +20,7 @@ function SavedItems({name, price, image, descShort, id, qty}) {
   return (
     <View style={styles.view}>
       <TouchableOpacity style={styles.itemDetails}>
-        <Image source={image} style={styles.image} />
+        <Image source={{uri: image}} style={styles.image} />
 
         <View>
           <Text style={styles.name}>

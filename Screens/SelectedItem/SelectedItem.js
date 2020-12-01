@@ -72,7 +72,6 @@ function SelectedItem({navigation, route}) {
           price: price,
           qty: qty,
           descLong: descLong,
-          rating: rating,
         },
       });
     }
@@ -97,7 +96,7 @@ function SelectedItem({navigation, route}) {
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{paddingBottom: 40}}>
-          <Image source={image} style={styles.image} />
+          <Image source={{uri: image}} style={styles.image} />
 
           <View style={styles.details}>
             <View
@@ -121,6 +120,8 @@ function SelectedItem({navigation, route}) {
             <View style={styles.qtyContainer}>
               <Text style={styles.price}>${price}</Text>
               <View style={{flexDirection: 'row'}}>
+                <Text>⭐</Text>
+                <Text>⭐</Text>
                 <Text>⭐</Text>
                 <Text>⭐</Text>
                 <Text>⭐</Text>

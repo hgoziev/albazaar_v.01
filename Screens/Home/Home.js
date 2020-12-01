@@ -27,6 +27,7 @@ function Home({navigation}) {
   const database = useSelector((state) => state.database);
   const dispatch = useDispatch();
 
+  //load data from mongodb
   const load = async () => {
     try {
       setLoading(true);
@@ -34,19 +35,23 @@ function Home({navigation}) {
         .get('https://albazaar.herokuapp.com/api')
         .then((res) => res.data);
 
-      // let arr = Object.assign([], response);
+      //store data to Asyncstorage
       await AsyncStorage.setItem('BIG_DATA', JSON.stringify(response));
+
       setLoading(false);
     } catch (err) {
       console.log(err);
     }
   };
 
+  //get data from Asyncstorage
   const getFromStorage = async () => {
     try {
       const value = await AsyncStorage.getItem('BIG_DATA');
       const gotValues = JSON.parse(value);
+
       if (gotValues !== null) {
+        //store data to redux store
         gotValues.map((item, index) => {
           dispatch({
             type: DATABASE_FILL,
@@ -57,8 +62,8 @@ function Home({navigation}) {
               descShort: item.short,
               descLong: item.long,
               price: item.price,
-              qty: 1,
-              rating: 5,
+              category: item.category,
+              qty: item.qty,
             },
           });
         });
@@ -66,13 +71,11 @@ function Home({navigation}) {
     } catch (error) {
       console.log(error);
     }
-    console.log('database:', database);
   };
   useEffect(() => {
-    // load();
+    load();
     getFromStorage();
   }, []);
-  // console.log('database', database);
 
   return (
     <KeyboardAvoidingView

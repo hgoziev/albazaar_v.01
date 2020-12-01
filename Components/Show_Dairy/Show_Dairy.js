@@ -1,14 +1,13 @@
-import React from 'react';
-import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
-import styles from './styles';
-import {useDispatch, useSelector} from 'react-redux';
 import {ADD_TO_BASKET} from '../../Actons/types';
+import React from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import styles from './styles';
+import {FlatList, Text, Image, TouchableOpacity, View} from 'react-native';
 
-function BestSelling({navigation}) {
-  const dispatch = useDispatch();
+function Show_Dairy({navigation}) {
   const basket = useSelector((state) => state.basket);
   const database = useSelector((state) => state.database);
-
+  const dispatch = useDispatch();
   let Arr = [];
   basket.map((item) => {
     Arr.push(item.id);
@@ -27,14 +26,14 @@ function BestSelling({navigation}) {
             price: item.price,
             qty: item.qty,
             descLong: item.descLong,
+            rating: item.rating,
           },
         });
       }
     };
-
-    if (item.category === 'best') {
+    if (item.category === 'dairy') {
       return (
-        <View style={styles.bestContainer}>
+        <View style={styles.scrollContainer}>
           <TouchableOpacity
             onPress={() =>
               navigation.navigate('selectedItem', {
@@ -48,7 +47,7 @@ function BestSelling({navigation}) {
                 rating: item.rating,
               })
             }>
-            <Image source={{uri: item.image}} style={styles.img} />
+            <Image source={{uri: item.image}} style={styles.image} />
           </TouchableOpacity>
           <Text style={styles.itemName}>{item.name}</Text>
           <Text style={styles.itemDesc}>{item.descShort}</Text>
@@ -62,28 +61,14 @@ function BestSelling({navigation}) {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Best Selling</Text>
-        <TouchableOpacity
-          style={styles.viewAllContainer}
-          onPress={() =>
-            navigation.navigate('byCategory', {keyword: 'show_best'})
-          }>
-          <Text>View All</Text>
-        </TouchableOpacity>
-      </View>
-
-      <FlatList
-        data={database}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.i}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        bounces={true}
-      />
-    </View>
+    <FlatList
+      data={database}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+      numColumns={2}
+      horizontal={false}
+    />
   );
 }
 
-export default BestSelling;
+export default Show_Dairy;

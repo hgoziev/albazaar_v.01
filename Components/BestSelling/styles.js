@@ -17,12 +17,26 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 7.5,
     borderTopRightRadius: 7.5,
   },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 15,
+    marginVertical: 10,
+  },
   title: {
     fontSize: 18,
     fontWeight: '700',
-    marginLeft: 15,
-    marginVertical: 10,
   },
+
+  viewAllContainer: {
+    backgroundColor: 'lightgrey',
+    paddingVertical: 3,
+    paddingHorizontal: 10,
+    borderRadius: 7,
+    borderWidth: 1,
+    borderColor: 'grey',
+  },
+
   itemName: {
     fontSize: 16,
     fontWeight: '700',
