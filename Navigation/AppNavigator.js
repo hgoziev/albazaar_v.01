@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useDispatch} from 'react-redux';
+import {DATABASE_FILL, LOADING} from '../Actons/types';
+import axios from 'axios';
 
 import ProfileNavigator from './ProfileNavigator';
 import DrawerNavigator from './DrawerNavigator';
@@ -11,6 +14,39 @@ import MyList from '../Screens/MyList/MyList';
 const Tab = createBottomTabNavigator();
 
 function AppNavigator() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const load = async () => {
+      dispatch({
+        type: LOADING,
+        payload: true,
+      });
+      const response = await axios
+        .get('https://albazaar.herokuapp.com/api')
+        .then((res) => res.data);
+      response.map((item, index) => {
+        dispatch({
+          type: DATABASE_FILL,
+          payload: {
+            id: item._id,
+            image: item.imageUrl,
+            name: item.title,
+            descShort: item.short,
+            descLong: item.long,
+            price: item.price,
+            category: item.category,
+            qty: item.qty,
+          },
+        });
+      });
+      dispatch({
+        type: LOADING,
+        payload: false,
+      });
+    };
+
+    load();
+  }, []);
   return (
     <NavigationContainer>
       <Tab.Navigator

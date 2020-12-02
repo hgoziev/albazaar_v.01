@@ -4,7 +4,7 @@ import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {ADD_TO_BASKET} from '../../Actons/types';
 
-function Cans({navigation}) {
+function Bread({navigation}) {
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.basket);
   const database = useSelector((state) => state.database);
@@ -64,11 +64,11 @@ function Cans({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>CANS & JARS</Text>
+        <Text style={styles.title}>BREAD & PASTA</Text>
         <TouchableOpacity
           style={styles.viewAllContainer}
           onPress={() =>
-            navigation.navigate('byCategory', {keyword: 'show_cans'})
+            navigation.navigate('byCategory', {keyword: 'show_bread'})
           }>
           <Text>View All</Text>
         </TouchableOpacity>
@@ -86,4 +86,4 @@ function Cans({navigation}) {
   );
 }
 
-export default Cans;
+export default Bread;

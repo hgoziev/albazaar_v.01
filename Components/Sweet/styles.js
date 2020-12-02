@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginLeft: 15,
     borderRadius: 9,
+    borderColor: 'grey',
   },
   img: {
     height: width * 0.35,
@@ -16,12 +17,26 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 7.5,
     borderTopRightRadius: 7.5,
   },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 15,
+    marginVertical: 10,
+  },
   title: {
     fontSize: 18,
     fontWeight: '700',
-    marginLeft: 15,
-    marginVertical: 10,
   },
+
+  viewAllContainer: {
+    backgroundColor: 'lightgrey',
+    paddingVertical: 3,
+    paddingHorizontal: 10,
+    borderRadius: 7,
+    borderWidth: 1,
+    borderColor: 'grey',
+  },
+
   itemName: {
     fontSize: 16,
     fontWeight: '700',
@@ -42,7 +57,7 @@ const styles = StyleSheet.create({
   },
   addBtn: {
     backgroundColor: 'rgb(28, 202, 96)',
-    paddingVertical: 5,
+    paddingVertical: 8,
     paddingHorizontal: 8,
     marginHorizontal: 10,
     borderRadius: 8,

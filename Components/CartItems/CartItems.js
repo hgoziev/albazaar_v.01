@@ -52,7 +52,7 @@ function CartItems({name, price, image, descShort, id, qty, saved}) {
           <Text style={styles.name}>
             {name.length < 14 ? name : name.substring(0, 15)}
           </Text>
-          <Text style={styles.price}>${price}</Text>
+          <Text style={styles.price}>₩{price}</Text>
           <Text style={styles.desc}>
             {descShort.length < 16 ? descShort : descShort.substring(0, 17)}
           </Text>

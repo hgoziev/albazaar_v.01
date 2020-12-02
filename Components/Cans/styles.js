@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginLeft: 15,
     borderRadius: 9,
+    borderColor: 'grey',
   },
   img: {
     height: width * 0.35,
@@ -26,6 +27,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
   },
+
   viewAllContainer: {
     backgroundColor: 'lightgrey',
     paddingVertical: 3,
@@ -34,6 +36,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'grey',
   },
+
   itemName: {
     fontSize: 16,
     fontWeight: '700',
@@ -54,7 +57,7 @@ const styles = StyleSheet.create({
   },
   addBtn: {
     backgroundColor: 'rgb(28, 202, 96)',
-    paddingVertical: 5,
+    paddingVertical: 8,
     paddingHorizontal: 8,
     marginHorizontal: 10,
     borderRadius: 8,

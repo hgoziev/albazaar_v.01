@@ -59,11 +59,7 @@ function TopBanner() {
 
   const renderItem = ({item}) => {
     return (
-      <ImageBackground source={item.image} style={styles.img}>
-        <TouchableOpacity style={styles.btnContainer}>
-          <Text style={styles.btnText}>{item.text}</Text>
-        </TouchableOpacity>
-      </ImageBackground>
+      <ImageBackground source={item.image} style={styles.img}></ImageBackground>
     );
   };
 

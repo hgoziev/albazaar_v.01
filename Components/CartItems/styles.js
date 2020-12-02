@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   counter: {fontSize: 20, fontWeight: '700'},
   remove: {
     backgroundColor: 'rgb(23, 23, 23)',
-    paddingVertical: 5,
+    paddingVertical: 10,
     paddingHorizontal: 5,
     marginTop: 20,
     borderRadius: 7,

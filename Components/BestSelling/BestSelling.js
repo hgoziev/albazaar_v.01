@@ -52,7 +52,7 @@ function BestSelling({navigation}) {
           </TouchableOpacity>
           <Text style={styles.itemName}>{item.name}</Text>
           <Text style={styles.itemDesc}>{item.descShort}</Text>
-          <Text style={styles.itemPrice}>${item.price}</Text>
+          <Text style={styles.itemPrice}>₩{item.price}</Text>
           <TouchableOpacity style={styles.addBtn} onPress={addToBasket}>
             <Text style={styles.addBtnText}>Add to Cart</Text>
           </TouchableOpacity>
@@ -64,7 +64,7 @@ function BestSelling({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Best Selling</Text>
+        <Text style={styles.title}>BEST SELLING</Text>
         <TouchableOpacity
           style={styles.viewAllContainer}
           onPress={() =>

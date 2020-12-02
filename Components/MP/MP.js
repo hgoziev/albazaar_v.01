@@ -3,25 +3,28 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
 
 function MP({navigation}) {
+  const handle = (word) => {
+    navigation.navigate('byCategory', {keyword: 'show_meat', word: word});
+  };
   return (
     <View style={styles.firstRow}>
       <Text style={styles.first_text}>MEAT & POULTRY</Text>
       <View style={styles.first_img}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handle('beef')}>
           <Image
             source={require('../../Assets/images/meat.jpg')}
             style={styles.first_images}
           />
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handle('lamb')}>
           <Image
             source={require('../../Assets/images/mp2.jpg')}
             style={styles.first_images}
           />
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handle('chicken')}>
           <Image
             source={require('../../Assets/images/mp.jpg')}
             style={styles.first_images}

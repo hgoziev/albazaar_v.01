@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -12,7 +12,13 @@ import OrderDetails from '../../Components/OrderDetails/OrderDetails';
 import CheckBox from '@react-native-community/checkbox';
 import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
-import {SAVE_ADDRESS} from '../../Actons/types';
+import {
+  ITEMS_INFO,
+  SAVE_ADDRESS,
+  EMPTY_BASKET,
+  EMPTY_SAVED,
+  EMPTY_ITEMS_INFO,
+} from '../../Actons/types';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 import {getSavedTotal, getBasketTotal} from '../../Reducer/Reducer';
@@ -23,6 +29,7 @@ function Payment({navigation, route}) {
   const basket = useSelector((state) => state.basket);
   const saved = useSelector((state) => state.saved);
   const address = useSelector((state) => state.address);
+  const items_info = useSelector((state) => state.items_info);
 
   const [deliveryFee, setDeliveryFee] = useState(null);
   const [shipment, setShipment] = useState(true);
@@ -34,94 +41,97 @@ function Payment({navigation, route}) {
   const [city, setCity] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
+  const [err, setErr] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [comments, setComments] = useState('');
-  const [wire, setWire] = useState(true);
-  const [price, setPrice] = useState(0);
-  const [title, setTitle] = useState('');
-  const [qty, setQty] = useState(1);
-  const [short, setShort] = useState('');
+  const [wire, setWire] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState('');
-  const [id, setId] = useState('');
+  const [shipmentMethod, setShipmentMethod] = useState('');
+  const min = 1000;
+  const max = 100000;
+  const randonNumber = Math.floor(min + Math.random() * (max - min));
 
-  const onNextButton = () => {
+  const Empty = () => {
+    if (fromSaved) {
+      dispatch({
+        type: EMPTY_SAVED,
+      });
+    } else {
+      dispatch({
+        type: EMPTY_BASKET,
+      });
+    }
     dispatch({
-      type: SAVE_ADDRESS,
-      payload: {
-        firstName: firstName,
-        lastName: lastName,
-        company: company,
-        addr1: addr1,
-        addr2: addr2,
-        city: city,
-        country: country,
-        zipCode: zipCode,
-        phoneNumber: phoneNumber,
-        comments: comments,
-      },
+      type: EMPTY_ITEMS_INFO,
     });
+    navigation.goBack();
+  };
+  const onNextButton = () => {
+    if ((addr1 && addr2 && city && zipCode) === '') {
+      alert('Please enter your address .');
+      setErr(true);
+    } else {
+      setErr(false);
+      dispatch({
+        type: SAVE_ADDRESS,
+        payload: {
+          firstName: firstName,
+          lastName: lastName,
+          company: company,
+          addr1: addr1,
+          addr2: addr2,
+          city: city,
+          country: country,
+          zipCode: zipCode,
+          phoneNumber: phoneNumber,
+          comments: comments,
+        },
+      });
+    }
   };
   const delivery = () => {
     if (shipment) {
       setDeliveryFee(5);
+      setShipmentMethod('Standart');
     } else {
       setDeliveryFee(10);
+      setShipmentMethod('Express');
     }
   };
 
-  const shipmentMethod = shipment ? 'Standart' : 'Express';
-  const total = fromSaved
-    ? deliveryFee + getSavedTotal(saved)
-    : deliveryFee + getBasketTotal(basket);
-
   const onSubmitButton = async () => {
-    setLoading(true);
     if (wire) {
-      fromSaved == true
-        ? saved.map((item) => {
-            setTitle(item.name);
-            setPrice(item.price);
-            setQty(item.qty);
-            setShort(item.descShort);
-            setImageUrl(item.image);
-            setId(item.id);
-          })
-        : basket.map((item) => {
-            setTitle(item.name);
-            setPrice(item.price);
-            setQty(item.qty);
-            setShort(item.descShort);
-            setImageUrl(item.image);
-            setId(item.id);
-          });
+      setLoading(true);
+      const total = fromSaved
+        ? deliveryFee + getSavedTotal(saved)
+        : deliveryFee + getBasketTotal(basket);
       try {
         await axios
           .post('https://albazaar.herokuapp.com/api/orders', {
-            address,
-            shipment: shipmentMethod,
+            items_info,
             total,
-            price,
-            qty,
-            title,
-            short,
-            imageUrl,
-            id: id,
+            shipment: shipmentMethod,
+            address,
+            id: randonNumber,
           })
           .then((res) => {
             setLoading(false);
-            alert('You order has successfully been submitted !');
-            navigation.navigate('home');
-          });
+            setWire(false);
+            alert(
+              `You order has successfully been submitted! Your Order Number: ${randonNumber}. Please save and refer this number when making a wire transfer .`,
+            );
+          })
+          .then(Empty);
+        // .then(() => navigation.goBack());
       } catch (err) {
         setLoading(false);
         alert('Error occured : ', err);
       }
     } else {
-      setLoading(false);
       alert('Please choose payment method .');
     }
   };
+
   return (
     <View>
       <ScrollView>
@@ -131,7 +141,7 @@ function Payment({navigation, route}) {
           <Ionicon name="home" size={34} color="rgb(28, 200, 95)" />
         </TouchableOpacity>
         <ProgressSteps>
-          <ProgressStep label="Address" onNext={onNextButton}>
+          <ProgressStep label="Address" onNext={onNextButton} errors={err}>
             <View style={styles.addressContainer}>
               <Text style={styles.title}>Address</Text>
               <TextInput
@@ -242,9 +252,9 @@ function Payment({navigation, route}) {
               </View>
 
               <View style={styles.checkboxDetailsContainer}>
-                <Text style={styles.checkboxText}>Delivery fee : $5</Text>
+                <Text style={styles.checkboxText}>Delivery fee : 5₩</Text>
                 <Text style={styles.checkboxText}>
-                  Delivery time : 2-4 days
+                  Delivery time : 2-4 days across South Korea
                 </Text>
               </View>
 
@@ -258,9 +268,9 @@ function Payment({navigation, route}) {
               </View>
 
               <View style={styles.checkboxDetailsContainer}>
-                <Text style={styles.checkboxText}>Delivery fee : $10</Text>
+                <Text style={styles.checkboxText}>Delivery fee : ₩10</Text>
                 <Text style={styles.checkboxText}>
-                  Same day delivery. Cut off at 3pm.
+                  Same day delivery. Cut off at 3pm. Only for Seoul area.
                 </Text>
               </View>
             </View>

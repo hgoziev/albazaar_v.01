@@ -15,14 +15,14 @@ import Show_Bread from '../../Components/Show_Bread/Show_Bread';
 import Show_Frozen from '../../Components/Show_Frozen/Show_Frozen';
 
 function ByCategory({navigation, route}) {
-  const {keyword} = route.params;
+  const {keyword, word} = route.params;
 
   const byType = () => {
     switch (keyword) {
       case 'show_dairy':
         return <Show_Dairy navigation={navigation} />;
       case 'show_meat':
-        return <Show_Meat navigation={navigation} />;
+        return <Show_Meat navigation={navigation} word={word} />;
       case 'show_drinks':
         return <Show_Drinks navigation={navigation} />;
       case 'show_fruits':

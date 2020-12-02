@@ -1,19 +1,33 @@
 import React from 'react';
 import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import auth from '@react-native-firebase/auth';
 
 import Header from '../../Components/Header/Header';
 import CartItems from '../../Components/CartItems/CartItems';
 import styles from './styles';
 import {getSavedTotal} from '../../Reducer/Reducer';
+import {ITEMS_INFO} from '../../Actons/types';
 
 function MyList({navigation}) {
+  const dispatch = useDispatch();
   const saved = useSelector((state) => state.saved);
   const buyNow = () => {
     if (!auth().currentUser) {
       navigation.navigate('login');
     } else {
+      saved.map((item) => {
+        dispatch({
+          type: ITEMS_INFO,
+          payload: {
+            title: item.name,
+            price: item.price,
+            qty: item.qty,
+            short: item.short,
+          },
+        });
+      });
+
       navigation.navigate('payment', {fromSaved: true});
     }
   };

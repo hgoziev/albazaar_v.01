@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -7,76 +7,25 @@ import {
   View,
   Image,
 } from 'react-native';
-import axios from 'axios';
-import {useSelector, useDispatch} from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useSelector} from 'react-redux';
 
+import styles from './styles';
 import BestSelling from '../../Components/BestSelling/BestSelling';
 import Dairy from '../../Components/Dairy/Dairy';
 import Cans from '../../Components/Cans/Cans';
 import Header from '../../Components/Header/Header';
 import MP from '../../Components/MP/MP';
 import TopBanner from '../../Components/TopBanner/TopBanner';
-import {DATABASE_FILL} from '../../Actons/types';
+import Bread from '../../Components/Bread/Bread';
+import Drinks from '../../Components/Drinks/Drinks';
+import Fruit from '../../Components/Fruit/Fruit';
+import Frozen from '../../Components/Frozen/Frozen';
+import Sweet from '../../Components/Sweet/Sweet';
+import Spice from '../../Components/Spice/Spice';
 
 function Home({navigation}) {
   const searching = useSelector((state) => state.searching);
-  const [data, setData] = useState([]);
-
-  const [loading, setLoading] = useState(false);
-  const database = useSelector((state) => state.database);
-  const dispatch = useDispatch();
-
-  //load data from mongodb
-  const load = async () => {
-    try {
-      setLoading(true);
-      const response = await axios
-        .get('https://albazaar.herokuapp.com/api')
-        .then((res) => res.data);
-
-      //store data to Asyncstorage
-      await AsyncStorage.setItem('BIG_DATA', JSON.stringify(response));
-
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  //get data from Asyncstorage
-  const getFromStorage = async () => {
-    try {
-      const value = await AsyncStorage.getItem('BIG_DATA');
-      const gotValues = JSON.parse(value);
-
-      if (gotValues !== null) {
-        //store data to redux store
-        gotValues.map((item, index) => {
-          dispatch({
-            type: DATABASE_FILL,
-            payload: {
-              id: item._id,
-              image: item.imageUrl,
-              name: item.title,
-              descShort: item.short,
-              descLong: item.long,
-              price: item.price,
-              category: item.category,
-              qty: item.qty,
-            },
-          });
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    load();
-    getFromStorage();
-  }, []);
-
+  const loading = useSelector((state) => state.loading);
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'android' ? null : 'padding'}
@@ -86,10 +35,11 @@ function Home({navigation}) {
       </View>
       {loading ? (
         <Image
-          source={require('../../Assets/images/gif.gif')}
-          width={70}
-          height={70}
+          source={require('../../Assets/images/d.gif')}
+          width={'100%'}
+          height={'100%'}
           resizeMode="center"
+          style={{alignSelf: 'center', justifyContent: 'center', flex: 1}}
         />
       ) : (
         <View style={{flex: 0.92}}>
@@ -110,6 +60,24 @@ function Home({navigation}) {
             <View style={styles.category}>
               <Cans navigation={navigation} />
             </View>
+            <View style={styles.category}>
+              <Bread navigation={navigation} />
+            </View>
+            <View style={styles.category}>
+              <Drinks navigation={navigation} />
+            </View>
+            <View style={styles.category}>
+              <Fruit navigation={navigation} />
+            </View>
+            <View style={styles.category}>
+              <Frozen navigation={navigation} />
+            </View>
+            <View style={styles.category}>
+              <Sweet navigation={navigation} />
+            </View>
+            <View style={styles.category}>
+              <Spice navigation={navigation} />
+            </View>
           </ScrollView>
         </View>
       )}
@@ -118,19 +86,3 @@ function Home({navigation}) {
 }
 
 export default Home;
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-  category: {
-    height: 330,
-    marginBottom: 20,
-  },
-  header: {
-    flex: 0.1,
-  },
-  header1: {
-    flex: 0.08,
-  },
-});

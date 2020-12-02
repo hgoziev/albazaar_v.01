@@ -51,7 +51,10 @@ function DrawerCom({navigation, props}) {
           <DrawerItem
             label="Meat, Poultry & Seafood "
             onPress={() =>
-              navigation.navigate('byCategory', {keyword: 'show_meat'})
+              navigation.navigate('byCategory', {
+                keyword: 'show_meat',
+                word: 'none',
+              })
             }
             activeTintColor="red"
             inactiveTintColor="rgb(30,30,30)"

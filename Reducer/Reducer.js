@@ -10,8 +10,12 @@ import {
   DEC,
   SAVE_ADDRESS,
   ADD_USER,
-  ITEMS_LOADING,
+  EMPTY_SAVED,
   DATABASE_FILL,
+  ITEMS_INFO,
+  EMPTY_BASKET,
+  EMPTY_ITEMS_INFO,
+  LOADING,
 } from '../Actons/types';
 
 const initialState = {
@@ -24,6 +28,7 @@ const initialState = {
   ALL_DATA: [],
   loading: false,
   database: [],
+  items_info: [],
 };
 
 export const getBasketTotal = (basket) =>
@@ -34,6 +39,21 @@ export const getSavedTotal = (saved) =>
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOADING:
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    case ITEMS_INFO:
+      return {
+        ...state,
+        items_info: [...state.items_info, action.payload],
+      };
+    case EMPTY_ITEMS_INFO:
+      return {
+        ...state,
+        items_info: [],
+      };
     case DATABASE_FILL:
       return {
         ...state,
@@ -69,7 +89,7 @@ const rootReducer = (state = initialState, action) => {
     case SAVE_ADDRESS:
       return {
         ...state,
-        address: [...state.address, action.payload],
+        address: action.payload,
       };
 
     case INCREMENT:
@@ -153,10 +173,17 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
-    case 'EMPTY_BASKET':
+    case EMPTY_BASKET:
       return {
         ...state,
         basket: [],
+        notifier: 0,
+      };
+    case EMPTY_SAVED:
+      return {
+        ...state,
+        saved: [],
+        savedNotifier: 0,
       };
     case 'SEARCH_OPEN':
       return {
@@ -174,11 +201,6 @@ const rootReducer = (state = initialState, action) => {
         savedNotifier: 0,
       };
 
-    case ITEMS_LOADING:
-      return {
-        ...state,
-        loading: true,
-      };
     default:
       return state;
   }

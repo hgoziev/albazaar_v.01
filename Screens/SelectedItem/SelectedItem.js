@@ -118,7 +118,7 @@ function SelectedItem({navigation, route}) {
             <Text>{descShort}</Text>
 
             <View style={styles.qtyContainer}>
-              <Text style={styles.price}>${price}</Text>
+              <Text style={styles.price}>₩{price}</Text>
               <View style={{flexDirection: 'row'}}>
                 <Text>⭐</Text>
                 <Text>⭐</Text>

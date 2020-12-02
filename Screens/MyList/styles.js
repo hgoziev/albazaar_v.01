@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   buyBtn: {
     backgroundColor: 'rgb(28, 200, 96)',
-    paddingVertical: 5,
+    paddingVertical: 8,
     paddingHorizontal: 27,
     borderRadius: 8,
   },
