@@ -32,7 +32,7 @@ function Sweet({navigation}) {
       }
     };
 
-    if (item.category === 'best') {
+    if (item.category === 'sweet') {
       return (
         <View style={styles.bestContainer}>
           <TouchableOpacity

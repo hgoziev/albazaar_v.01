@@ -32,7 +32,7 @@ function Spice({navigation}) {
       }
     };
 
-    if (item.category === 'best') {
+    if (item.category === 'spice') {
       return (
         <View style={styles.bestContainer}>
           <TouchableOpacity

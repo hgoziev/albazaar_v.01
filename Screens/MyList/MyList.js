@@ -56,7 +56,7 @@ function MyList({navigation}) {
               <View style={styles.lineBreak} />
               <View style={styles.buyContainer}>
                 <Text style={{fontSize: 20, fontWeight: 'bold'}}>
-                  Total: $<Text>{getSavedTotal(saved)}</Text>
+                  Total: ₩<Text>{getSavedTotal(saved)}</Text>
                 </Text>
                 <TouchableOpacity style={styles.buyBtn} onPress={buyNow}>
                   <Text style={styles.buyBtnText}>Buy Now</Text>

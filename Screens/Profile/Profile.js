@@ -1,15 +1,12 @@
 import React from 'react';
-import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import styles from './styles';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {useSelector} from 'react-redux';
 import auth from '@react-native-firebase/auth';
-import Login from '../Login/Login';
 import AuthNavigator from '../../Navigation/AuthNavigator';
 
 function Profile({navigation}) {
-  const user = useSelector((state) => state.user);
   const signOutUser = () => {
     auth()
       .signOut()
@@ -21,7 +18,7 @@ function Profile({navigation}) {
           return null;
         }
       });
-    navigation.navigate('login');
+    navigation.navigate('Home');
   };
 
   if (!auth().currentUser) {

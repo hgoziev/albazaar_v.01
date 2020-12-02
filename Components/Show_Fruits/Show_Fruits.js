@@ -31,7 +31,7 @@ function Show_Fruits({navigation}) {
         });
       }
     };
-    if (item.category === 'fruits') {
+    if (item.category === 'fruit') {
       return (
         <View style={styles.scrollContainer}>
           <TouchableOpacity
@@ -51,7 +51,7 @@ function Show_Fruits({navigation}) {
           </TouchableOpacity>
           <Text style={styles.itemName}>{item.name}</Text>
           <Text style={styles.itemDesc}>{item.descShort}</Text>
-          <Text style={styles.itemPrice}>${item.price}</Text>
+          <Text style={styles.itemPrice}>₩{item.price}</Text>
           <TouchableOpacity style={styles.addBtn} onPress={addToBasket}>
             <Text style={styles.addBtnText}>Add to Cart</Text>
           </TouchableOpacity>

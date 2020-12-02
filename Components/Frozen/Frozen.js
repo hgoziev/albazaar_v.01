@@ -32,7 +32,7 @@ function Frozen({navigation}) {
       }
     };
 
-    if (item.category === 'best') {
+    if (item.category === 'frozen') {
       return (
         <View style={styles.bestContainer}>
           <TouchableOpacity

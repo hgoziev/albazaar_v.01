@@ -90,10 +90,10 @@ function Payment({navigation, route}) {
   };
   const delivery = () => {
     if (shipment) {
-      setDeliveryFee(5);
+      setDeliveryFee(3500);
       setShipmentMethod('Standart');
     } else {
-      setDeliveryFee(10);
+      setDeliveryFee(5000);
       setShipmentMethod('Express');
     }
   };
@@ -251,7 +251,7 @@ function Payment({navigation, route}) {
               </View>
 
               <View style={styles.checkboxDetailsContainer}>
-                <Text style={styles.checkboxText}>Delivery fee : 5₩</Text>
+                <Text style={styles.checkboxText}>Delivery fee : ₩3,500</Text>
                 <Text style={styles.checkboxText}>
                   Delivery time : 2-4 days across South Korea
                 </Text>
@@ -267,7 +267,7 @@ function Payment({navigation, route}) {
               </View>
 
               <View style={styles.checkboxDetailsContainer}>
-                <Text style={styles.checkboxText}>Delivery fee : ₩10</Text>
+                <Text style={styles.checkboxText}>Delivery fee : ₩5,000</Text>
                 <Text style={styles.checkboxText}>
                   Same day delivery. Cut off at 3pm. Only for Seoul area.
                 </Text>

@@ -32,7 +32,7 @@ function Cans({navigation}) {
       }
     };
 
-    if (item.category === 'best') {
+    if (item.category === 'cans') {
       return (
         <View style={styles.bestContainer}>
           <TouchableOpacity

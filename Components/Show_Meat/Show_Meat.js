@@ -56,7 +56,7 @@ function Show_Meat({navigation, word}) {
             </TouchableOpacity>
             <Text style={styles.itemName}>{item.name}</Text>
             <Text style={styles.itemDesc}>{item.descShort}</Text>
-            <Text style={styles.itemPrice}>${item.price}</Text>
+            <Text style={styles.itemPrice}>₩{item.price}</Text>
             <TouchableOpacity style={styles.addBtn} onPress={addToBasket}>
               <Text style={styles.addBtnText}>Add to Cart</Text>
             </TouchableOpacity>
@@ -84,7 +84,7 @@ function Show_Meat({navigation, word}) {
             </TouchableOpacity>
             <Text style={styles.itemName}>{item.name}</Text>
             <Text style={styles.itemDesc}>{item.descShort}</Text>
-            <Text style={styles.itemPrice}>${item.price}</Text>
+            <Text style={styles.itemPrice}>₩{item.price}</Text>
             <TouchableOpacity style={styles.addBtn} onPress={addToBasket}>
               <Text style={styles.addBtnText}>Add to Cart</Text>
             </TouchableOpacity>
@@ -112,7 +112,7 @@ function Show_Meat({navigation, word}) {
             </TouchableOpacity>
             <Text style={styles.itemName}>{item.name}</Text>
             <Text style={styles.itemDesc}>{item.descShort}</Text>
-            <Text style={styles.itemPrice}>${item.price}</Text>
+            <Text style={styles.itemPrice}>₩{item.price}</Text>
             <TouchableOpacity style={styles.addBtn} onPress={addToBasket}>
               <Text style={styles.addBtnText}>Add to Cart</Text>
             </TouchableOpacity>
@@ -140,7 +140,7 @@ function Show_Meat({navigation, word}) {
             </TouchableOpacity>
             <Text style={styles.itemName}>{item.name}</Text>
             <Text style={styles.itemDesc}>{item.descShort}</Text>
-            <Text style={styles.itemPrice}>${item.price}</Text>
+            <Text style={styles.itemPrice}>₩{item.price}</Text>
             <TouchableOpacity style={styles.addBtn} onPress={addToBasket}>
               <Text style={styles.addBtnText}>Add to Cart</Text>
             </TouchableOpacity>

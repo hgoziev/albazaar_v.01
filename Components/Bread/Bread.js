@@ -32,7 +32,7 @@ function Bread({navigation}) {
       }
     };
 
-    if (item.category === 'best') {
+    if (item.category === 'bread') {
       return (
         <View style={styles.bestContainer}>
           <TouchableOpacity

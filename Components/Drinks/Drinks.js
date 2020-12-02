@@ -32,7 +32,7 @@ function Drinks({navigation}) {
       }
     };
 
-    if (item.category === 'best') {
+    if (item.category === 'drinks') {
       return (
         <View style={styles.bestContainer}>
           <TouchableOpacity

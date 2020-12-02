@@ -32,7 +32,7 @@ function Fruit({navigation}) {
       }
     };
 
-    if (item.category === 'best') {
+    if (item.category === 'fruit') {
       return (
         <View style={styles.bestContainer}>
           <TouchableOpacity
@@ -68,7 +68,7 @@ function Fruit({navigation}) {
         <TouchableOpacity
           style={styles.viewAllContainer}
           onPress={() =>
-            navigation.navigate('byCategory', {keyword: 'show_fruit'})
+            navigation.navigate('byCategory', {keyword: 'show_fruits'})
           }>
           <Text>View All</Text>
         </TouchableOpacity>
