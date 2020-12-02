@@ -15,6 +15,7 @@ import auth from '@react-native-firebase/auth';
 import styles from './styles';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicon from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function SignUp({navigation}) {
   const {width, height} = Dimensions.get('screen');
@@ -34,16 +35,7 @@ function SignUp({navigation}) {
     } else {
       auth()
         .createUserWithEmailAndPassword(email, password)
-        .then(() => {
-          dispatch({
-            type: ADD_USER,
-            payload: {
-              username: username,
-              email: email,
-            },
-          });
-        })
-        .then(() => navigation.navigate('home'))
+        .then(() => navigation.navigate('Home'))
         .catch((error) => {
           if (error.code === 'auth/email-already-in-use') {
             setErrorMessage('That email address is already in use!');

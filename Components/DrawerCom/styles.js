@@ -36,6 +36,11 @@ const styles = StyleSheet.create({
     width: '70%',
     marginLeft: 10,
   },
+  sideImg: {
+    width: 25,
+    height: 25,
+    borderRadius: 25 / 2,
+  },
 });
 
 export default styles;

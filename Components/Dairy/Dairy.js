@@ -32,7 +32,7 @@ function Dairy({navigation}) {
       }
     };
 
-    if (item.category === 'dairy') {
+    if (item.category === 'best') {
       return (
         <View style={styles.bestContainer}>
           <TouchableOpacity

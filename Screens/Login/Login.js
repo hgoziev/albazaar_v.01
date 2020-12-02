@@ -24,7 +24,7 @@ function Login({navigation}) {
     } else {
       auth()
         .signInWithEmailAndPassword(email, password)
-        .then(() => navigation.navigate('home'))
+        .then(() => navigation.navigate('Home'))
         .catch((error) => {
           if (error.code === 'auth/email-already-in-use') {
             setErrorMessage('That email address is already in use!');

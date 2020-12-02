@@ -2,12 +2,10 @@ import React from 'react';
 import {View, Image, Text} from 'react-native';
 import styles from './styles';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-import {useSelector} from 'react-redux';
 import auth from '@react-native-firebase/auth';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
 function DrawerCom({navigation, props}) {
-  const user = useSelector((state) => state.user);
   return (
     <>
       <View style={styles.container}>
@@ -18,7 +16,7 @@ function DrawerCom({navigation, props}) {
 
         {auth().currentUser ? (
           <View style={styles.textContainer}>
-            <Text style={styles.text}>{user.username}</Text>
+            <Text style={styles.text}>Welcom Back </Text>
           </View>
         ) : (
           <View style={styles.textContainer}>
@@ -47,7 +45,10 @@ function DrawerCom({navigation, props}) {
           />
         </View>
         <View style={styles.viewContainer}>
-          <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
+          <Image
+            source={require('../../Assets/images/meat.png')}
+            style={styles.sideImg}
+          />
           <DrawerItem
             label="Meat, Poultry & Seafood "
             onPress={() =>
@@ -63,7 +64,10 @@ function DrawerCom({navigation, props}) {
         </View>
 
         <View style={styles.viewContainer}>
-          <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
+          <Image
+            source={require('../../Assets/images/wheat.png')}
+            style={styles.sideImg}
+          />
           <DrawerItem
             label="Rice Flour, Pulses & Grains"
             onPress={() =>
@@ -76,7 +80,10 @@ function DrawerCom({navigation, props}) {
         </View>
 
         <View style={styles.viewContainer}>
-          <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
+          <Image
+            source={require('../../Assets/images/fruits.png')}
+            style={styles.sideImg}
+          />
           <DrawerItem
             label="Fruits & Vegetables"
             onPress={() =>
@@ -88,7 +95,10 @@ function DrawerCom({navigation, props}) {
           />
         </View>
         <View style={styles.viewContainer}>
-          <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
+          <Image
+            source={require('../../Assets/images/b.png')}
+            style={styles.sideImg}
+          />
           <DrawerItem
             label="Bread, Noodle & Pasta"
             onPress={() =>
@@ -100,7 +110,10 @@ function DrawerCom({navigation, props}) {
           />
         </View>
         <View style={styles.viewContainer}>
-          <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
+          <Image
+            source={require('../../Assets/images/milk-box.png')}
+            style={styles.sideImg}
+          />
           <DrawerItem
             label="Dairy"
             onPress={() =>
@@ -113,7 +126,10 @@ function DrawerCom({navigation, props}) {
         </View>
 
         <View style={styles.viewContainer}>
-          <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
+          <Image
+            source={require('../../Assets/images/canned-food.png')}
+            style={styles.sideImg}
+          />
           <DrawerItem
             label="Cans & Jars"
             onPress={() =>
@@ -125,7 +141,10 @@ function DrawerCom({navigation, props}) {
           />
         </View>
         <View style={styles.viewContainer}>
-          <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
+          <Image
+            source={require('../../Assets/images/drinks.png')}
+            style={styles.sideImg}
+          />
           <DrawerItem
             label="Drinks & Beverages"
             onPress={() =>
@@ -137,7 +156,10 @@ function DrawerCom({navigation, props}) {
           />
         </View>
         <View style={styles.viewContainer}>
-          <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
+          <Image
+            source={require('../../Assets/images/ice-cream.png')}
+            style={styles.sideImg}
+          />
           <DrawerItem
             label="Sweets & Snacks"
             onPress={() =>
@@ -149,7 +171,10 @@ function DrawerCom({navigation, props}) {
           />
         </View>
         <View style={styles.viewContainer}>
-          <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
+          <Image
+            source={require('../../Assets/images/spices.png')}
+            style={styles.sideImg}
+          />
           <DrawerItem
             label="Spices & Packets"
             onPress={() =>
@@ -162,7 +187,10 @@ function DrawerCom({navigation, props}) {
         </View>
 
         <View style={styles.viewContainer}>
-          <Ionicon name="home" color="rgb(28, 200, 95)" size={20} />
+          <Image
+            source={require('../../Assets/images/hot-pot.png')}
+            style={styles.sideImg}
+          />
           <DrawerItem
             label="Frozen Foods"
             onPress={() =>

@@ -12,21 +12,21 @@ function MP({navigation}) {
       <View style={styles.first_img}>
         <TouchableOpacity onPress={() => handle('beef')}>
           <Image
-            source={require('../../Assets/images/meat.jpg')}
+            source={require('../../Assets/images/meat1.png')}
             style={styles.first_images}
           />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => handle('lamb')}>
           <Image
-            source={require('../../Assets/images/mp2.jpg')}
+            source={require('../../Assets/images/lamb.png')}
             style={styles.first_images}
           />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => handle('chicken')}>
           <Image
-            source={require('../../Assets/images/mp.jpg')}
+            source={require('../../Assets/images/chicken.png')}
             style={styles.first_images}
           />
         </TouchableOpacity>

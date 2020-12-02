@@ -36,12 +36,12 @@ function TopBanner() {
   }, []);
   const DATA = [
     {
-      id: '2',
+      id: '1',
       image: require('../../Assets/images/img3.png'),
       text: 'Order Now',
     },
     {
-      id: '1',
+      id: '2',
       image: require('../../Assets/images/img.png'),
       text: 'Order Now',
     },
@@ -53,6 +53,11 @@ function TopBanner() {
     {
       id: '4',
       image: require('../../Assets/images/banner1.png'),
+      text: 'Order Now',
+    },
+    {
+      id: '5',
+      image: require('../../Assets/images/img2.jpg'),
       text: 'Order Now',
     },
   ];

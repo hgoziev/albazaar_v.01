@@ -18,11 +18,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   first_images: {
-    width: width * 0.26,
-    height: width * 0.21,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'rgb(0, 188, 61)',
+    width: width * 0.16,
+    height: width * 0.16,
+    borderRadius: (width * 0.16) / 2,
+    resizeMode: 'contain',
   },
 });
 

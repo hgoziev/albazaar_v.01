@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   category: {
-    height: 330,
+    height: 350,
     marginBottom: 20,
   },
   header: {

@@ -1,12 +1,17 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+  },
   checkboxContainer: {
     flexDirection: 'row',
+    backgroundColor: 'white',
   },
   addressContainer: {
     justifyContent: 'center',
     paddingHorizontal: 30,
+    backgroundColor: 'white',
   },
   input: {
     backgroundColor: 'rgb(240, 240, 240)',
@@ -55,6 +60,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   home: {marginTop: 20, marginLeft: 30, flexDirection: 'row'},
+  loadimg: {
+    resizeMode: 'center',
+    width: 70,
+    height: 70,
+    alignSelf: 'center',
+    flex: 1,
+    justifyContent: 'center',
+  },
 });
 
 export default styles;

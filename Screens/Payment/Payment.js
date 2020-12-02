@@ -13,7 +13,6 @@ import CheckBox from '@react-native-community/checkbox';
 import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {
-  ITEMS_INFO,
   SAVE_ADDRESS,
   EMPTY_BASKET,
   EMPTY_SAVED,
@@ -133,7 +132,7 @@ function Payment({navigation, route}) {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <ScrollView>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
@@ -285,8 +284,8 @@ function Payment({navigation, route}) {
               <View style={styles.paymentCheckboxContainer}>
                 {loading === true ? (
                   <Image
-                    source={require('../../Assets/images/25.gif')}
-                    resizeMode="center"
+                    source={require('../../Assets/images/d.gif')}
+                    style={styles.loadimg}
                   />
                 ) : (
                   <>
