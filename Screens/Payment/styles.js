@@ -68,6 +68,37 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  wrapper: {
+    paddingTop: 50,
+    flex: 1,
+  },
+
+  modal: {
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    borderRadius: 20,
+    paddingHorizontal: 20,
+  },
+
+  modal3: {
+    height: 300,
+    width: 300,
+  },
+
+  btn: {
+    margin: 10,
+    backgroundColor: 'rgb(40,40,40)',
+    borderRadius: 10,
+    paddingHorizontal: 25,
+    paddingVertical: 10,
+  },
+  text: {
+    color: 'black',
+    fontSize: 18,
+  },
+  btnText: {
+    color: 'white',
+  },
 });
 
 export default styles;

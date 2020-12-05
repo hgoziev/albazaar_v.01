@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -65,6 +65,7 @@ function Payment({navigation, route}) {
     });
     navigation.goBack();
   };
+
   const onNextButton = () => {
     if ((addr1 && addr2 && city && zipCode) === '') {
       alert('Please enter your address .');
@@ -88,6 +89,7 @@ function Payment({navigation, route}) {
       });
     }
   };
+
   const delivery = () => {
     if (shipment) {
       setDeliveryFee(3500);
@@ -106,25 +108,30 @@ function Payment({navigation, route}) {
         : deliveryFee + getBasketTotal(basket);
       try {
         await axios
-          .post('https://albazaar.herokuapp.com/api/orders', {
-            items_info,
-            total,
-            shipment: shipmentMethod,
-            address,
-            id: randonNumber,
-          })
+          .post(
+            'https://albazaar.herokuapp.com/api/orders',
+            {
+              items_info,
+              total,
+              shipment: shipmentMethod,
+              address,
+              id: randonNumber,
+            },
+            {timeout: 1000 * 10},
+          )
           .then((res) => {
             setLoading(false);
             setWire(false);
-            alert(
-              `You order has successfully been submitted! Your Order Number: ${randonNumber}. Please save and refer this number when making a wire transfer .`,
-            );
           })
-          .then(Empty);
-        // .then(() => navigation.goBack());
+          .then(Empty)
+          .then(() =>
+            navigation.navigate('success', {
+              orderNo: randonNumber,
+            }),
+          );
       } catch (err) {
         setLoading(false);
-        alert('Error occured : ', err);
+        navigation.navigate('failure');
       }
     } else {
       alert('Please choose payment method .');

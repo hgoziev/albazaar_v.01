@@ -9,6 +9,8 @@ import SelectedItem from '../Screens/SelectedItem/SelectedItem';
 import Payment from '../Screens/Payment/Payment';
 import ByCategory from '../Screens/ByCategory/ByCategory';
 import AuthNavigator from './AuthNavigator';
+import Success from '../Components/Success/Success';
+import Failure from '../Components/Failure/Failure';
 
 const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => (
@@ -22,6 +24,8 @@ const DrawerNavigator = () => (
     <Drawer.Screen name="payment" component={Payment} />
     <Drawer.Screen name="byCategory" component={ByCategory} />
     <Drawer.Screen name="auths" component={AuthNavigator} />
+    <Drawer.Screen name="success" component={Success} />
+    <Drawer.Screen name="failure" component={Failure} />
   </Drawer.Navigator>
 );
 
