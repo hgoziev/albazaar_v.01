@@ -1,6 +1,6 @@
 # al-bazaar
 
-## Grocery shopping app
+###  Grocery shopping app   - Full Stack MERN App
 
 ### Front End 
 <ul>
@@ -21,7 +21,7 @@
   </li>
 </ul>
   
-  ### Backend
+### Backend
 
 <ul>
 <li>
@@ -35,17 +35,31 @@
     <h5>
   </li>
 </ul>
-      
+
+### STORAGE 
+
+<ul>
+  <li>
+  <h5>
+  MongoDB  - all data with image url  referencing Cloudinary
+  </h5>
+  </li>
+  <li>
+  <h5>
+    Cloudinary  -  storage for images and videos
+  </h5>
+  </li>
+  </ul>
         
-  ### API
+### API 
 
 <ul>
 <li>
   <h5>
-   Wordpress REST API
-    <h5>
-  </li>
-    <li>
+  Paypal
+  </h5>
+</li>
+  <li>
   <h5>
    STRIPE PAYMENT
     <h5>
