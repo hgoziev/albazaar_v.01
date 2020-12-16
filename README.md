@@ -67,3 +67,11 @@
 </ul>
   
   
+### How to use 
+
+<h5>cd project folder</h5>
+<h5>npm install </h4>
+<h5>npx react-native run-android && npx react-native start </h5>
+
+### Admin Panel - <p> To post data and recieve order details
+  https://albazaar.herokuapp.com/
