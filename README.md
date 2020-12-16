@@ -68,10 +68,12 @@
   
   
 ### How to use 
+<ul>
+ <li> 
+   <h5>cd project folder</h5></li>
+  <li><h5>npm install </h5></li>
+  <li><h5>npx react-native run-android && npx react-native start </h5></li>
+  </ul>
 
-<h5>cd project folder</h5>
-<h5>npm install </h4>
-<h5>npx react-native run-android && npx react-native start </h5>
-
-### Admin Panel - <p> To post data and recieve order details
+### Admin Panel - to post data and recieve order details
   https://albazaar.herokuapp.com/
