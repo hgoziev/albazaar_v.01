@@ -51,7 +51,7 @@
   </li>
   </ul>
         
-### API 
+### API not available in this version
 
 <ul>
 <li>
