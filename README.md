@@ -76,4 +76,5 @@
   </ul>
 
 ### Admin Panel - to post data and recieve order details
-  https://albazaar.herokuapp.com/
+ <h5>Ask me for the admin panel</h5>
+ <p>hgoziev001@gmail.com</p>
